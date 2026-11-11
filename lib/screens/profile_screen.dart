@@ -10,8 +10,8 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   //Todo 1 Variable
   bool isSignedIn = false;
-  String fullName = '';
-  String userName = '';
+  String fullName = 'Melky Krisnando';
+  String userName = 'Melky';
   int favoriteCandiCount = 0;
   @override
   Widget build(BuildContext context) {
@@ -55,17 +55,52 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Row(
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width / 3,
                     child: Row(children: [
                       Icon(Icons.lock, color: Colors.amber,),
                       SizedBox(width: 8,),
                       Text("Pengguna", style:TextStyle(fontSize: 18, fontWeight: FontWeight.bold,))
                     ],),
                   ),
-                  Text('$userName', style: TextStyle(fontSize: 18),),
+                  Expanded(
+                    child: Text(': $userName', style: TextStyle(fontSize: 18)),
+                  ),
                 ],
-              )
-              // todo 4 profile actions
+              ),
+              SizedBox(height: 4,),
+              Divider(color: Colors.deepPurple,),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 3,
+                    child: Row(children: [
+                      Icon(Icons.person, color: Colors.blue,),
+                      SizedBox(width: 8,),
+                      Text("Nama Lengkap", style:TextStyle(fontSize: 18, fontWeight: FontWeight.bold,))
+                    ],),
+                  ),
+                  Expanded(
+                    child: Text(': $fullName', style: TextStyle(fontSize: 18)),
+                  ),if (isSignedIn) const Icon(Icons.edit),
+                ],
+              ),
+              SizedBox(height: 4,),
+              Divider(color: Colors.deepPurple,),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 3,
+                    child: Row(children: [
+                      Icon(Icons.favorite, color: Colors.red,),
+                      SizedBox(width: 8,),
+                      Text("Favorit", style:TextStyle(fontSize: 18, fontWeight: FontWeight.bold,))
+                    ],),
+                  ),
+                  Expanded(
+                    child: Text(': $favoriteCandiCount', style: TextStyle(fontSize: 18)),
+                  ),
+                ],
+              ),
             ],
           )
         ],
